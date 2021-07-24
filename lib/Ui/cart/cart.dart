@@ -1,10 +1,9 @@
-
+import 'package:autopart/Ui/DeliverLocation/DeliverLocation.dart';
 import 'package:autopart/Ui/cart/bloc/cart_bloc.dart';
 import 'package:autopart/core/style/base_color.dart';
 import 'package:autopart/model/GetCartModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:autopart/Ui/cart/placeOreder.dart';
 
 class Cart extends StatefulWidget {
   Cart({Key key}) : super(key: key);
@@ -16,7 +15,7 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   int counter = 1;
   double total = 0;
-  List<CartItem> cart = [];
+  List<CurrentCartItem> cart = [];
 
   bool iscartempty = true;
   @override
@@ -67,7 +66,7 @@ class _CartState extends State<Cart> {
               if (state.finalcart.isNotEmpty) {
                 iscartempty = false;
                 cart = state.finalcart;
-         
+
                 for (var i = 0; i < state.finalcart.length; i++) {
                   total = total + state.finalcart[i].fullPrice.ceil();
                 }
@@ -110,21 +109,24 @@ class _CartState extends State<Cart> {
                                         child: SizedBox(
                                           height: size.height * 0.2,
                                           width: size.width * 0.2,
-                                          child:
-                                              cart[index].attachments.isNotEmpty
-                                                  ? CircleAvatar(backgroundColor: Colors.white,
-                                                                                                      child: Image.network(
-                                                        '${cart[index].attachments[0].publicUrl}',
-                                                        width: size.width * 0.3,
-                                                        height: size.height * 0.1,
-                                                        fit: BoxFit.contain,
-                                                      ),
-                                                  )
-                                                  : Image.asset(
-                                                      'assets/images/carIcon.png',
-                                                      width: size.width * 0.3,
-                                                      height: size.height * 0.1,
-                                                    ),
+                                          child: cart[index]
+                                                  .product
+                                                  .attachments
+                                                  .isNotEmpty
+                                              ? CircleAvatar(
+                                                  backgroundColor: Colors.white,
+                                                  child: Image.network(
+                                                    '${cart[index].attachments[0].publicUrl}',
+                                                    width: size.width * 0.3,
+                                                    height: size.height * 0.1,
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                )
+                                              : Image.asset(
+                                                  'assets/images/carIcon.png',
+                                                  width: size.width * 0.3,
+                                                  height: size.height * 0.1,
+                                                ),
                                         ),
                                       ),
                                       Padding(
@@ -238,8 +240,6 @@ class _CartState extends State<Cart> {
                               },
                             ),
                           ),
-                        
-                        
                           SizedBox(
                             height: size.height * 0.01,
                           ),
@@ -282,8 +282,11 @@ class _CartState extends State<Cart> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => 
-                                          PlaceOrder()
+                                          builder: (context) =>
+                                              DelieverLocation(
+                                                cart: cart,
+                                              )
+
                                           // DelieverLocation()
                                           ));
                                 },
@@ -327,8 +330,6 @@ class _CartState extends State<Cart> {
                               )
                             ],
                           )
-                      
-                      
                         ],
                       ),
                     ),

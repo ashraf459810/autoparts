@@ -709,11 +709,14 @@ class HttpHelper implements IHttpHelper {
   }
 
   @override
-  Future<String> confirmcart(int cartId) async {
+  Future<String> confirmcart(int customerid, double x, double y, String city,
+      String street, String country, int cartid) async {
     final String url =
-        "http://$base:8080/autoparts/order/confirm?order=$cartId";
-
-    var response = await http.get(url);
+        "http://$base:8080/autoparts/order/confirm?order=$cartid&country=$country&city=$city&street=$street&additionalAddress=&deliverXLongitude=$x&deliverYLatitude=$y&customer=$customerid";
+    print(url);
+    var response = await http.post(url);
+    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
       print("200 from cart");
       String result = response.body;
@@ -728,11 +731,11 @@ class HttpHelper implements IHttpHelper {
         "http://$base:8080/autoparts/order/removeitem?item=$itemid&order=$cartid";
     print("cart id is $cartid  item id is $itemid");
     var response = await http.post(url);
-
+    print(response.body);
     if (response.statusCode == 200) {
       print("200 from remove item");
       GetCartModel cartModel = getCartModelFromJson(response.body);
-      print(cartModel.cartItems.length);
+
       return cartModel;
     } else
       return null;

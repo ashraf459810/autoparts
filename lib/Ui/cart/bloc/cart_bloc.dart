@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:autopart/data/db_helper/db/DataBaseHelper.dart';
 import 'package:autopart/data/http_helper/http_helper.dart';
 import 'package:autopart/data/prefs_helper/prefs_helper.dart';
@@ -17,7 +18,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   HttpHelper helper = HttpHelper();
   PrefsHelper prefsHelper = PrefsHelper();
 
-
   @override
   Stream<CartState> mapEventToState(
     CartEvent event,
@@ -30,7 +30,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       if (cart != null) {
         await prefsHelper.setcartid(cart.id);
-        yield GetCartState(cart.cartItems);
+        yield GetCartState(cart.currentCartItems);
       } else {
         yield Error("Error While loading cart");
       }
@@ -76,9 +76,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
     if (event is ConfirmCart) {
       yield Loading();
-      int id = await prefsHelper.getcartid();
-      if (id != null) {
-        String result = await helper.confirmcart(event.cartId);
+      int cartid = await prefsHelper.getcartid();
+      int customerid = await prefsHelper.getcustomerid();
+      if (cartid != null) {
+        String result = await helper.confirmcart(customerid, event.x, event.y,
+            event.city, event.street, event.country, cartid);
         if (result == "Done") {
           yield ConfirmCartState("Done");
         }
@@ -102,7 +104,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       if (id != null) {
         cart = await helper.removecartitem(id, event.itemid);
         if (cart != null) {
-          yield RemoveItem(cart.cartItems);
+          yield RemoveItem(cart.currentCartItems);
         } else {
           yield Error("Error while canceling cart");
         }

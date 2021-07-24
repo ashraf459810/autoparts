@@ -92,7 +92,8 @@ abstract class IHttpHelper {
   Future<GetCartModel> addQuotaiontocart(int qoutaionoOfferid, int cartId);
 
   Future<GetCartModel> addProductfromSerachtocart(int productid, int cartId);
-  Future<String> confirmcart(int cartId);
+  Future<String> confirmcart(int customerid, double x, double y, String city,
+      String street, String country, int cartid);
   Future<String> cancelcart(int cartid);
   Future<GetCartModel> removecartitem(int cartid, int itemid);
   Future<List<MultiReqestQModel>> multirequestforquotationnotification(

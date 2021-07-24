@@ -6,7 +6,7 @@ abstract class CartState {}
 class CartInitial extends CartState {}
 
 class GetCartState extends CartState {
-  final List<CartItem> finalcart;
+  final List<CurrentCartItem> finalcart;
 
   GetCartState(this.finalcart);
 }
@@ -34,6 +34,6 @@ class CancelCartState extends CartState {
 }
 
 class RemoveItem extends CartState {
-  final List<CartItem> finalcart;
+  final List<CurrentCartItem> finalcart;
   RemoveItem(this.finalcart);
 }

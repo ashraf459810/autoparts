@@ -39,8 +39,8 @@ class _VendorHomePageState extends State<VendorHomePage>
 
     return Scaffold(
         body: Container(
-            height: size.height ,
-            child: Column(
+      height: size.height,
+      child: Column(
         children: [
           Container(
             height: size.height * 0.21,
@@ -67,7 +67,7 @@ class _VendorHomePageState extends State<VendorHomePage>
             ),
           ),
           Container(
-            height: size.height - size.height * 0.3,
+            height: size.height - size.height * 0.32,
             child: Stack(children: [
               Opacity(
                 opacity: 0.1,
@@ -89,14 +89,13 @@ class _VendorHomePageState extends State<VendorHomePage>
                   builder: (context, state) {
                     if (state is VendorhomescreenInitial) {
                       return Container(
-               
                           child: Center(
-                            child: CircularProgressIndicator(
-                              backgroundColor: orange,
-                            ),
-                          ));
+                        child: CircularProgressIndicator(
+                          backgroundColor: orange,
+                        ),
+                      ));
                     }
-        
+
                     if (state is VendorProductsUsedState) {
                       usedproducts = state.usedProducts;
                     }
@@ -149,11 +148,11 @@ class _VendorHomePageState extends State<VendorHomePage>
                                 print("here from listener");
                                 pages++;
                                 print(pages);
-        
+
                                 vendorhomescreenBloc
                                     .add(GetNewProducts(pages, "NEW", ssize));
                               }
-        
+
                               return false;
                             },
                             child: newproducts.isNotEmpty
@@ -177,7 +176,6 @@ class _VendorHomePageState extends State<VendorHomePage>
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 8.0),
                                           child: Container(
-                                            
                                             width: size.width * 0.3,
                                             decoration: BoxDecoration(
                                                 borderRadius:
@@ -212,27 +210,22 @@ class _VendorHomePageState extends State<VendorHomePage>
                                                       children: [
                                                         Center(
                                                           child: Text(
-                                                        
                                                             newproducts[
                                                                     position]
                                                                 .product
                                                                 .name,
-                                                                    overflow: TextOverflow.ellipsis,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
                                                             style: TextStyle(
-                                                              
-                                                                fontSize: 10,
-                                                                color:
-                                                                    heavyBlue,
-                                                               
-                                                                        ),
+                                                              fontSize: 10,
+                                                              color: heavyBlue,
+                                                            ),
                                                           ),
                                                         ),
                                                         Center(
                                                           child: Text(
-                                                            "price:${newproducts[
-                                                                    position]
-                                                                .price
-                                                            }",
+                                                            "price:${newproducts[position].price}",
                                                             style: TextStyle(
                                                                 fontSize: 12,
                                                                 color:
@@ -313,11 +306,11 @@ class _VendorHomePageState extends State<VendorHomePage>
                                 print("here from listener");
                                 pages++;
                                 print(pages);
-        
+
                                 vendorhomescreenBloc
                                     .add(GetNewProducts(pages, "USED", ssize));
                               }
-        
+
                               return false;
                             },
                             child: usedproducts.isNotEmpty
@@ -369,9 +362,9 @@ class _VendorHomePageState extends State<VendorHomePage>
                                                         .product
                                                         .name,
                                                     style: TextStyle(
-                                                        fontSize: 10,
-                                                        color: heavyBlue,
-                                                        ),
+                                                      fontSize: 10,
+                                                      color: heavyBlue,
+                                                    ),
                                                   ),
                                                   Text(
                                                     usedproducts[position]
@@ -514,7 +507,7 @@ class _VendorHomePageState extends State<VendorHomePage>
             ]),
           ),
         ],
-            ),
-          ));
+      ),
+    ));
   }
 }

@@ -43,88 +43,92 @@ class _CartHistoryState extends State<CartHistory> {
                 elevation: 0,
               )),
           body: BlocConsumer<CarthistoryBloc, CarthistoryState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
+            listener: (context, state) {},
             builder: (context, state) {
               if (state is GetCartHistoyState) {
                 carts = state.carts;
               }
 
-              return 
-      carts.isNotEmpty?        Container(
-                height: size.height,
-                child: ListView.builder(
-                  itemCount:carts.length,
-                  itemBuilder: (context, index) {
-                    return NotificationListener<ScrollNotification>(
-                        onNotification: (notification) {
-                          if (notification is ScrollEndNotification &&
-                              scrollController.position.extentAfter == 0) {
-                            print("here from listener");
-                            page++;
+              return carts.isNotEmpty
+                  ? Container(
+                      height: size.height,
+                      child: ListView.builder(
+                        itemCount: carts.length,
+                        itemBuilder: (context, index) {
+                          return NotificationListener<ScrollNotification>(
+                              onNotification: (notification) {
+                                if (notification is ScrollEndNotification &&
+                                    scrollController.position.extentAfter ==
+                                        0) {
+                                  print("here from listener");
+                                  page++;
 
-                            context
-                                .read<CarthistoryBloc>()
-                                .add(GetCartHistoryEvent(page, sszie));
-                          }
+                                  context
+                                      .read<CarthistoryBloc>()
+                                      .add(GetCartHistoryEvent(page, sszie));
+                                }
 
-                          return false;
+                                return false;
+                              },
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => CartHistoryItem(
+                                      cartInfo: carts[index],
+                                    ),
+                                  ));
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 30),
+                                  child: Container(
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: size.width * 0.05,
+                                                ),
+                                                Icon(
+                                                  Icons.shopping_cart,
+                                                  color: orange,
+                                                  size: 50,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: size.width * 0.02,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                    "Order: #${carts[index].id}"),
+                                                SizedBox(
+                                                  width: size.width * 0.3,
+                                                ),
+                                                Text("10 Oct, 2020")
+                                              ],
+                                            ),
+                                            Text(
+                                                "price :${carts[index].fullPrice}")
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ));
                         },
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => CartHistoryItem(cartInfo: carts[index],),
-                            ));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 30),
-                            child: Container(
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: size.width * 0.05,
-                                          ),
-                                          Icon(
-                                            Icons.shopping_cart,
-                                            color: orange,
-                                            size: 50,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: size.width * 0.02,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Order: #${carts[index].id}"),
-                                          SizedBox(
-                                            width: size.width * 0.3,
-                                          ),
-                                          Text("10 Oct, 2020")
-                                        ],
-                                      ),
-                                      Text("price :${carts[index].fullPrice}")
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ));
-                  },
-                ),
-              ):Container();
+                      ),
+                    )
+                  : Container();
             },
           )),
     );

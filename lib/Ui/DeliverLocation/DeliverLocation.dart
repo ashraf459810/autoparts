@@ -1,5 +1,7 @@
 import 'package:autopart/Ui/DeliverLocation/GetLocationBloc/getlocation_bloc.dart';
+import 'package:autopart/Ui/cart/placeOreder.dart';
 import 'package:autopart/core/style/base_color.dart';
+import 'package:autopart/model/GetCartModel.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DelieverLocation extends StatefulWidget {
-  DelieverLocation({Key key}) : super(key: key);
+  final List<CurrentCartItem> cart;
+  DelieverLocation({Key key, this.cart}) : super(key: key);
 
   @override
   _DelieverLocationState createState() => _DelieverLocationState();
@@ -203,7 +206,8 @@ class _DelieverLocationState extends State<DelieverLocation> {
                 SizedBox(
                   height: size.height * 0.02,
                 ),
-                Container(color: Colors.white,
+                Container(
+                  color: Colors.white,
                   child: Builder(
                     builder: (context) => DropdownButton<String>(
                       hint: Center(child: Text("Select country")),
@@ -239,10 +243,11 @@ class _DelieverLocationState extends State<DelieverLocation> {
                     ),
                   ),
                 ),
-                SizedBox(height: size.height *0.03),
+                SizedBox(height: size.height * 0.03),
                 Container(
-                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.all(Radius.circular(10))),
-                  
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
                   height: size.height * 0.04,
                   width: size.width * 0.7,
                   child: TextFormField(
@@ -264,25 +269,39 @@ class _DelieverLocationState extends State<DelieverLocation> {
                 SizedBox(
                   height: size.height * 0.03,
                 ),
-                Container(
-                  height: size.height * 0.06,
-                  width: size.width * 0.35,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: orange,
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Next",
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PlaceOrder(
+                        cart: widget.cart,
+                        city: city2 != null ? city2 : city,
+                        country: country2 != null ? country2 : country,
+                        street: street2 != null ? street2 : street,
+                        x: currentPostion.longitude,
+                        y: currentPostion.latitude,
+                      ),
+                    ));
+                  },
+                  child: Container(
+                    height: size.height * 0.06,
+                    width: size.width * 0.35,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: orange,
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Next",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

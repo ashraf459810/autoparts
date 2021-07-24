@@ -21,8 +21,12 @@ class AddQoutaionEvent extends CartEvent {
 }
 
 class ConfirmCart extends CartEvent {
-  final int cartId;
-  ConfirmCart(this.cartId);
+  final String country;
+  final String city;
+  final String street;
+  final double x;
+  final double y;
+  ConfirmCart(this.city, this.country, this.x, this.y, this.street);
 }
 
 class CancelCart extends CartEvent {
@@ -31,7 +35,6 @@ class CancelCart extends CartEvent {
 }
 
 class RemoveItemEvent extends CartEvent {
-
   final int itemid;
-  RemoveItemEvent( this.itemid);
+  RemoveItemEvent(this.itemid);
 }
