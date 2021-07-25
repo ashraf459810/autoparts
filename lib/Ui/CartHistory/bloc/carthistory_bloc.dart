@@ -39,5 +39,14 @@ class CarthistoryBloc extends Bloc<CarthistoryEvent, CarthistoryState> {
         yield GetCartHistoyState(carts);
       }
     }
+    if (event is ReturnItemEvent) {
+      int id = await prefsHelper.getcustomerid();
+      String result =
+          await helper.requesttoreturnitem(id, event.itemid, event.reason);
+      if (result == "Done") {
+        yield ReturnItemState(result);
+      } else
+        yield Error("error while send the order");
+    }
   }
 }

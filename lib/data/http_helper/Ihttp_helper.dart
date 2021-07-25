@@ -103,4 +103,5 @@ abstract class IHttpHelper {
   Future<String> getcustomerpoints(int customerid);
   Future<CartHistory> getcustomerordershistory(
       int page, int size, int customerid);
+  Future<String> requesttoreturnitem(int customerid, int itemid, String reason);
 }

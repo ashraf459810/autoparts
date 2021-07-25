@@ -8,3 +8,9 @@ class GetCartHistoryEvent extends CarthistoryEvent {
   final int size;
   GetCartHistoryEvent(this.pages, this.size);
 }
+
+class ReturnItemEvent extends CarthistoryEvent {
+  final int itemid;
+  final String reason;
+  ReturnItemEvent(this.itemid, this.reason);
+}

@@ -814,4 +814,17 @@ class HttpHelper implements IHttpHelper {
     } else
       return null;
   }
+
+  @override
+  Future<String> requesttoreturnitem(
+      int customerid, int itemid, String reason) async {
+    final String url =
+        "http://$base:8080/autoparts/order/returnproduct?cartItem=9905&customer=7753&reason=TEST";
+    var response = await http.post(url);
+    print(response.statusCode);
+    if (response.body == "Done")
+      return response.body;
+    else
+      return null;
+  }
 }
