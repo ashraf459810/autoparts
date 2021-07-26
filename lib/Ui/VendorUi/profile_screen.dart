@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:autopart/Ui/CartHistory/CartHistory.dart';
 import 'package:autopart/Ui/VendorUi/ChosenNotificationType.dart';
 import 'package:autopart/Ui/VendorUi/EditBrands.dart';
 import 'package:autopart/Ui/wallet/Wallet.dart';
@@ -209,7 +210,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             );
                                           },
                                         )),
-                             
                                     isvendor
                                         ? InkWell(
                                             onTap: () {
@@ -613,6 +613,66 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             width: size.width * 0.55,
                                             child: Text(
                                               'My Wallet',
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: heavyBlue),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: bgColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(100),
+                                              ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  color: heavyBlue,
+                                                  size: 16,
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  : Container(
+                                      height: 1,
+                                    ),
+                              Divider(
+                                indent: 8,
+                                endIndent: 8,
+                              ),
+
+                              !isvendor
+                                  ? InkWell(
+                                      onTap: () {
+                                        Navigator.of(context)
+                                            .push(MaterialPageRoute(
+                                          builder: (context) => CartHistory(),
+                                        ));
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 5,
+                                                right: 16,
+                                                top: 8,
+                                                bottom: 8),
+                                            child: Icon(
+                                              Icons.shopping_bag,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          Container(
+                                            width: size.width * 0.55,
+                                            child: Text(
+                                              'Cart History',
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   color: heavyBlue),

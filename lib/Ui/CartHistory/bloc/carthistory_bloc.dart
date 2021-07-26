@@ -43,10 +43,11 @@ class CarthistoryBloc extends Bloc<CarthistoryEvent, CarthistoryState> {
       int id = await prefsHelper.getcustomerid();
       String result =
           await helper.requesttoreturnitem(id, event.itemid, event.reason);
+
       if (result == "Done") {
         yield ReturnItemState(result);
       } else
-        yield Error("error while send the order");
+        yield Error("you already asked for return");
     }
   }
 }

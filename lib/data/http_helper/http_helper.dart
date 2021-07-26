@@ -822,6 +822,7 @@ class HttpHelper implements IHttpHelper {
         "http://$base:8080/autoparts/order/returnproduct?cartItem=9905&customer=7753&reason=TEST";
     var response = await http.post(url);
     print(response.statusCode);
+    print(response.body);
     if (response.body == "Done")
       return response.body;
     else

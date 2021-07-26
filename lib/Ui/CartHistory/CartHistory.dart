@@ -113,7 +113,8 @@ class _CartHistoryState extends State<CartHistory> {
                                                 SizedBox(
                                                   width: size.width * 0.3,
                                                 ),
-                                                Text("10 Oct, 2020")
+                                                Text(
+                                                    "${carts[index].creationDate.day}/${carts[index].creationDate.month}/${carts[index].creationDate.year}")
                                               ],
                                             ),
                                             Text(
