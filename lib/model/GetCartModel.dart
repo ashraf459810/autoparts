@@ -85,13 +85,13 @@ class GetCartModel {
             List<dynamic>.from(currentCartItems.map((x) => x.toJson())),
         "status": status,
         "fullPrice": fullPrice,
-        "doneDate": doneDate.toIso8601String(),
-        "deliverCountry": deliverCountry,
-        "deliverCity": deliverCity,
-        "deliverStreet": deliverStreet,
-        "deliverAdditionalAddress": deliverAdditionalAddress,
-        "deliverXLongitude": deliverXLongitude,
-        "deliverYLatitude": deliverYLatitude,
+        // "doneDate": doneDate.toIso8601String(),
+        // "deliverCountry": deliverCountry,
+        // "deliverCity": deliverCity,
+        // "deliverStreet": deliverStreet,
+        // "deliverAdditionalAddress": deliverAdditionalAddress,
+        // "deliverXLongitude": deliverXLongitude,
+        // "deliverYLatitude": deliverYLatitude,
       };
 }
 
@@ -142,7 +142,6 @@ class CurrentCartItem {
         product: Brand.fromJson(json["product"]),
         fullPrice: json["fullPrice"].toDouble(),
         sourceTypeName: json["sourceTypeName"],
-        allowReturnUntil: DateTime.parse(json["allowReturnUntil"]),
         returned: json["returned"],
       );
 

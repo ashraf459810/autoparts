@@ -819,8 +819,9 @@ class HttpHelper implements IHttpHelper {
   Future<String> requesttoreturnitem(
       int customerid, int itemid, String reason) async {
     final String url =
-        "http://$base:8080/autoparts/order/returnproduct?cartItem=9905&customer=7753&reason=TEST";
+        "http://$base:8080/autoparts/order/returnproduct?cartItem=$itemid&customer=$customerid&reason=$reason";
     var response = await http.post(url);
+    print(url);
     print(response.statusCode);
     print(response.body);
     if (response.body == "Done")
