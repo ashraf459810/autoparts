@@ -491,7 +491,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
                                         color: lightGray, fontSize: 12),
                                   ),
                                   Text(
-                                    "490.49 AED",
+                                    "${widget.cart[0].fullPrice}",
                                     style: TextStyle(
                                         color: lightGray,
                                         fontSize: 20,
@@ -514,6 +514,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
                             Builder(
                               builder: (context) => InkWell(
                                 onTap: () {
+                                  print("here the confirm event");
                                   context.read<CartBloc>().add(ConfirmCart(
                                       widget.city,
                                       widget.country,

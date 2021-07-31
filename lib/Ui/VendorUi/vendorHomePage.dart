@@ -43,17 +43,17 @@ class _VendorHomePageState extends State<VendorHomePage>
       child: Column(
         children: [
           Container(
-            height: size.height * 0.21,
+            height: size.height * 0.218,
             child: Stack(
               children: [
                 Image.asset(
                   "assets/images/logo.png",
                   width: size.width,
-                  height: size.height * 0.21,
+                  height: size.height * 0.23,
                   fit: BoxFit.fill,
                 ),
                 Positioned(
-                  top: size.height * 0.155,
+                  top: size.height * 0.17,
                   left: 0,
                   right: 0,
                   child: Text(
@@ -138,7 +138,7 @@ class _VendorHomePageState extends State<VendorHomePage>
                         height: size.height * 0.02,
                       ),
                       SizedBox(
-                        height: size.height * 0.25,
+                        height: size.height * 0.2,
                         width: size.width,
                         child: NotificationListener<ScrollNotification>(
                             onNotification: (notification) {
@@ -187,7 +187,8 @@ class _VendorHomePageState extends State<VendorHomePage>
                                                     CrossAxisAlignment.center,
                                                 children: [
                                                   SizedBox(
-                                                      height: size.height * 0.2,
+                                                      height:
+                                                          size.height * 0.15,
                                                       width: size.width * 0.3,
                                                       child: newproducts[
                                                                   position]
@@ -263,7 +264,7 @@ class _VendorHomePageState extends State<VendorHomePage>
                                         ))),
                       ),
                       SizedBox(
-                        height: size.height * 0.02,
+                        height: size.height * 0.03,
                       ),
                       Row(
                         children: [
@@ -273,7 +274,7 @@ class _VendorHomePageState extends State<VendorHomePage>
                           Text(
                             "USED",
                             style: TextStyle(
-                                color: lightGray,
+                                color: lightOrange,
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -293,10 +294,10 @@ class _VendorHomePageState extends State<VendorHomePage>
                         ],
                       ),
                       SizedBox(
-                        height: size.height * 0.02,
+                        height: size.height * 0.03,
                       ),
                       SizedBox(
-                        height: size.height * 0.25,
+                        height: size.height * 0.2,
                         width: size.width,
                         child: NotificationListener<ScrollNotification>(
                             onNotification: (notification) {
@@ -343,7 +344,8 @@ class _VendorHomePageState extends State<VendorHomePage>
                                               child: Column(
                                                 children: [
                                                   SizedBox(
-                                                      height: size.height * 0.2,
+                                                      height:
+                                                          size.height * 0.15,
                                                       width: size.width * 0.3,
                                                       child: usedproducts[
                                                                   position]
@@ -367,9 +369,7 @@ class _VendorHomePageState extends State<VendorHomePage>
                                                     ),
                                                   ),
                                                   Text(
-                                                    usedproducts[position]
-                                                        .price
-                                                        .toString(),
+                                                    "price :${usedproducts[position].price.toString()}",
                                                     style: TextStyle(
                                                         fontSize: 12,
                                                         color: heavyBlue,

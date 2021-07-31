@@ -79,13 +79,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       int cartid = await prefsHelper.getcartid();
       int customerid = await prefsHelper.getcustomerid();
       if (cartid != null) {
+        print("here from bloc the cartid !=null");
         String result = await helper.confirmcart(customerid, event.x, event.y,
             event.city, event.street, event.country, cartid);
         if (result == "Done") {
           yield ConfirmCartState("Done");
         }
+      } else {
+        yield Error("Error while confirming cart");
       }
-      yield Error("Error while confirming cart");
     }
     if (event is CancelCart) {
       yield Loading();

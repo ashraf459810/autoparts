@@ -1,5 +1,3 @@
-
-
 import 'package:autopart/Ui//vendorUi/profile_screen.dart';
 import 'package:autopart/Ui/search_screen/search_screen.dart';
 
@@ -25,7 +23,6 @@ class _HomeState extends State<Home> {
     SearchScreen(),
     Cart(),
     ProfileScreen(),
-    Container(),
   ];
 
   @override
@@ -88,22 +85,22 @@ class _HomeState extends State<Home> {
               color: lightOrange,
             ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.menu,
-              color: heavyBlue,
-            ),
-            // ignore: deprecated_member_use
-            title: Text(
-              'More',
-              style: TextStyle(
-                  color: _currentIndex == 4 ? lightOrange : Colors.grey),
-            ),
-            activeIcon: Icon(
-              Icons.menu,
-              color: lightOrange,
-            ),
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(
+          //     Icons.menu,
+          //     color: heavyBlue,
+          //   ),
+          //   // ignore: deprecated_member_use
+          //   title: Text(
+          //     'More',
+          //     style: TextStyle(
+          //         color: _currentIndex == 4 ? lightOrange : Colors.grey),
+          //   ),
+          //   activeIcon: Icon(
+          //     Icons.menu,
+          //     color: lightOrange,
+          //   ),
+          // ),
         ],
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,

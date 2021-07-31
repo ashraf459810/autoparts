@@ -35,25 +35,20 @@ class _VendorReportsState extends State<VendorReports> {
                 preferredSize: Size.fromHeight(80),
                 child: AppBar(
                   backgroundColor: Colors.white,
-                 
-               
-                    
-                  
-                  title: 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20, right: 100),
-                      child: Container(
-                        child: Text(
-                          "Reports & Statistics",
-                          style: TextStyle(
-                              color: heavyBlue,
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold),
-                        ),
+                  title: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                    ),
+                    child: Container(
+                      child: Text(
+                        "Reports & Statistics",
+                        style: TextStyle(
+                            color: heavyBlue,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
-                  
-             
+                  ),
                   elevation: 0,
                 )),
             backgroundColor: bgColor,
@@ -87,24 +82,32 @@ class _VendorReportsState extends State<VendorReports> {
                       padding: const EdgeInsets.only(left: 1),
                       child: Column(
                         children: [
-                          Container(decoration: BoxDecoration(border: Border.all(color: orange)),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: orange)),
                             child: ListTile(
                                 title: Text(
                                   "From    ${dateTime1.year}-${dateTime1.month}-${dateTime1.day}",
                                   style: TextStyle(
-                                      fontSize: 16, fontWeight: FontWeight.bold,color: heavyBlue),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: heavyBlue),
                                 ),
                                 trailing: Icon(Icons.keyboard_arrow_down),
                                 onTap: () {
                                   _pickeddate();
                                 }),
                           ),
-                          Container(decoration: BoxDecoration(border: Border.all(color: orange)),
-                                                      child: ListTile(
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: orange)),
+                            child: ListTile(
                               title: Text(
                                 "To         ${dateTime2.year}-${dateTime2.month}-${dateTime2.day}",
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold,color: heavyBlue),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: heavyBlue),
                               ),
                               trailing: Icon(Icons.keyboard_arrow_down),
                               onTap: () {
@@ -120,106 +123,112 @@ class _VendorReportsState extends State<VendorReports> {
                     ),
                     Container(
                       color: Colors.white,
-                      child: vendorStatisics!=null? Column(
-                        children: [
-                          SizedBox(height: size.height * 0.02),
-                          statistics(
-                              size.height,
-                              size.width,
-                              "best Product For Others",
-                              vendorStatisics.bestProductForOtherYouDontHave),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                              size.height,
-                              size.width,
-                              "high Price Product",
-                              vendorStatisics.highPriceProduct),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                              size.height,
-                              size.width,
-                              "most Product Sold For Others",
-                              vendorStatisics.mostProductSoldForOthers),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                              size.height,
-                              size.width,
-                              "mostProductSoldName",
-                              vendorStatisics.mostProductSoldName),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                            size.height,
-                            size.width,
-                            "average Customer Rates",
-                            ("${vendorStatisics.averageCustomerRates}"),
-                          ),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                            size.height,
-                            size.width,
-                            "most Product Sold Incomes",
-                            ("${vendorStatisics.mostProductSoldIncomes}"),
-                          ),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                            size.height,
-                            size.width,
-                            "products Count",
-                            ("${vendorStatisics.productsCount}"),
-                          ),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                            size.height,
-                            size.width,
-                            "sales Count",
-                            ("${vendorStatisics.salesCount}"),
-                          ),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                            size.height,
-                            size.width,
-                            "high Price Product",
-                            ("${vendorStatisics.highPriceProduct}"),
-                          ),
-                          Divider(
-                            color: Colors.grey[300],
-                            height: 10,
-                          ),
-                          statistics(
-                            size.height,
-                            size.width,
-                            "total Incomes",
-                            ("${vendorStatisics.totalIncomes}"),
-                          ),
-                        ],
-                      ):Container(height: 1,),
-                      
+                      child: vendorStatisics != null
+                          ? Column(
+                              children: [
+                                SizedBox(height: size.height * 0.02),
+                                statistics(
+                                    size.height,
+                                    size.width,
+                                    "best Product For Others",
+                                    vendorStatisics
+                                        .bestProductForOtherYouDontHave),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                    size.height,
+                                    size.width,
+                                    "high Price Product",
+                                    vendorStatisics.highPriceProduct),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                    size.height,
+                                    size.width,
+                                    "most Product Sold For Others",
+                                    vendorStatisics.mostProductSoldForOthers),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                    size.height,
+                                    size.width,
+                                    "mostProductSoldName",
+                                    vendorStatisics.mostProductSoldName),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                  size.height,
+                                  size.width,
+                                  "average Customer Rates",
+                                  ("${vendorStatisics.averageCustomerRates}"),
+                                ),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                  size.height,
+                                  size.width,
+                                  "most Product Sold Incomes",
+                                  ("${vendorStatisics.mostProductSoldIncomes}"),
+                                ),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                  size.height,
+                                  size.width,
+                                  "products Count",
+                                  ("${vendorStatisics.productsCount}"),
+                                ),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                  size.height,
+                                  size.width,
+                                  "sales Count",
+                                  ("${vendorStatisics.salesCount}"),
+                                ),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                  size.height,
+                                  size.width,
+                                  "high Price Product",
+                                  ("${vendorStatisics.highPriceProduct}"),
+                                ),
+                                Divider(
+                                  color: Colors.grey[300],
+                                  height: 10,
+                                ),
+                                statistics(
+                                  size.height,
+                                  size.width,
+                                  "total Incomes",
+                                  ("${vendorStatisics.totalIncomes}"),
+                                ),
+                              ],
+                            )
+                          : Container(
+                              height: 1,
+                            ),
                     ),
-                    SizedBox(height: size.height *0.02,),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
                     GestureDetector(
                       onTap: () {
                         print(
@@ -228,11 +237,13 @@ class _VendorReportsState extends State<VendorReports> {
                             "${dateTime1.year}-${dateTime1.month}-${dateTime1.day}";
                         String date2 =
                             "${dateTime2.year}-${dateTime2.month}-${dateTime2.day}";
-                            context.read<VendorstatisticsBloc>().add(GetVendorStatisticsEvent(date2,date1));
+                        context
+                            .read<VendorstatisticsBloc>()
+                            .add(GetVendorStatisticsEvent(date2, date1));
                       },
                       child: Container(
-                        height: size.height * 0.06,
-                        width: size.width * 0.35,
+                        height: size.height * 0.065,
+                        width: size.width * 0.45,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: heavyBlue,
@@ -250,7 +261,7 @@ class _VendorReportsState extends State<VendorReports> {
                               ),
                               // SizedBox(width: size.width * 0.06),
                               Container(
-                                height: size.height * 0.03,
+                                height: size.height * 0.024,
                                 width: size.width * 0.05,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
@@ -317,14 +328,13 @@ class _VendorReportsState extends State<VendorReports> {
         ),
         Padding(
           padding: const EdgeInsets.only(right: 1),
-          child: SizedBox(height: high*0.02,
-          width: width*0.2,
+          child: SizedBox(
+            height: high * 0.02,
+            width: width * 0.2,
             child: AutoSizeText(
-              
-                   
-                "$value",style: TextStyle(color: orange,fontSize: 18),maxLines: 1,
-         
-     
+              "$value",
+              style: TextStyle(color: orange, fontSize: 18),
+              maxLines: 1,
             ),
           ),
         ),

@@ -37,7 +37,7 @@ dependencies:
   get_it: ^3.0.1
   flutter_datetime_picker: ^1.5.1
   flutter_google_places: ^0.2.8
-  flutter_bloc: ^7.0.0
+  flutter_bloc: ^7.1.0
   built_value: ^7.1.0
   analyzer: ^0.39.14
   flutter_spinkit: "^4.0.0"

@@ -49,28 +49,30 @@ class _CartHistoryState extends State<CartHistory> {
                 carts = state.carts;
               }
 
-              return carts.isNotEmpty
-                  ? Container(
-                      height: size.height,
-                      child: ListView.builder(
-                        itemCount: carts.length,
-                        itemBuilder: (context, index) {
-                          return NotificationListener<ScrollNotification>(
-                              onNotification: (notification) {
-                                if (notification is ScrollEndNotification &&
-                                    scrollController.position.extentAfter ==
-                                        0) {
-                                  print("here from listener");
-                                  page++;
+              return NotificationListener<ScrollNotification>(
+                  onNotification: (notification) {
+                    if (notification is ScrollEndNotification &&
+                        scrollController.position.extentAfter == 0) {
+                      print("here from listener");
+                      page++;
 
-                                  context
-                                      .read<CarthistoryBloc>()
-                                      .add(GetCartHistoryEvent(page, sszie));
-                                }
+                      context
+                          .read<CarthistoryBloc>()
+                          .add(GetCartHistoryEvent(page, sszie));
+                    }
 
-                                return false;
-                              },
-                              child: InkWell(
+                    return false;
+                  },
+                  child: carts.isNotEmpty
+                      ? Container(
+                          height: size.height,
+                          child: ListView.builder(
+                            controller: scrollController,
+                            physics: ScrollPhysics(
+                                parent: AlwaysScrollableScrollPhysics()),
+                            itemCount: carts.length,
+                            itemBuilder: (context, index) {
+                              return InkWell(
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => CartHistoryItem(
@@ -125,11 +127,11 @@ class _CartHistoryState extends State<CartHistory> {
                                     ),
                                   ),
                                 ),
-                              ));
-                        },
-                      ),
-                    )
-                  : Container();
+                              );
+                            },
+                          ),
+                        )
+                      : Container());
             },
           )),
     );

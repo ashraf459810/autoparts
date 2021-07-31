@@ -101,6 +101,7 @@ class _SignUpTabState extends State<SignUpTab> {
             child: Column(
               children: [
                 Container(
+                  height: size.height,
                   width: size.width,
                   decoration: BoxDecoration(
                       image: DecorationImage(
@@ -258,7 +259,6 @@ class _SignUpTabState extends State<SignUpTab> {
                                       ),
                                     ),
                                     Divider(),
-                                  
                                     widget.isVendor
                                         ? Padding(
                                             padding: const EdgeInsets.only(
@@ -1295,7 +1295,8 @@ class _SignUpTabState extends State<SignUpTab> {
                                           onSelect: (Country value) {
                                             setState(() {
                                               country = value.phoneCode;
-                                               FocusScope.of(context).requestFocus(f1);
+                                              FocusScope.of(context)
+                                                  .requestFocus(f1);
                                             });
                                           });
                                     },
@@ -1466,7 +1467,7 @@ class _SignUpTabState extends State<SignUpTab> {
                           ),
                           BlocListener<CreatVendorBloc, CreatVendorState>(
                             listener: (context, state) {
-                               if (state is Loading) {
+                              if (state is Loading) {
                                 final snackBar = SnackBar(
                                   content: Text('Loading ...'),
                                   backgroundColor: orange,
@@ -1516,14 +1517,12 @@ class _SignUpTabState extends State<SignUpTab> {
                                         country + mobileNumberdController.text,
                                     fullName: fullname,
                                     email: email,
-                            
                                     userName: fullname,
                                   );
 
                                   if (mobileNumber != null &&
                                       fullname != null &&
                                       email != null &&
-                                
                                       country != "select country") {
                                     context.read<CustomerblocBloc>().add(
                                         CreateCustomerevent(createCustomer));
@@ -1556,7 +1555,6 @@ class _SignUpTabState extends State<SignUpTab> {
                                       email: email,
                                       idNumber: idNumber,
                                       brands: brands,
-                                      
                                       receiveNewsAndUpdatesEmails:
                                           receiveNewsAndUpdatesEmails,
                                       sellerType: sellerType,
@@ -1568,7 +1566,6 @@ class _SignUpTabState extends State<SignUpTab> {
                                   if (mobileNumber != null &&
                                       companyName != null &&
                                       brands != null &&
-                                    
                                       sellerType != null &&
                                       sellermode != null &&
                                       fullname != null &&

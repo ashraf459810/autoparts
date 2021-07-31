@@ -1,3 +1,4 @@
+import 'package:autopart/Ui/cart/cart.dart';
 import 'package:autopart/Ui/product_page/product_page.dart';
 import 'package:autopart/Ui/search_screen/bloc/searchscreen_bloc.dart';
 import 'package:autopart/core/style/base_color.dart';
@@ -58,16 +59,39 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
               pages: pages,
               size: ssize)),
         child: Scaffold(
-            // appBar: PreferredSize(
-            //   preferredSize: Size.fromHeight(100.0),
-            //   child: AppBar(
-            //     backgroundColor: Colors.white,
-            //     elevation: 0,
-            //     titleSpacing: 0,
-            //     leading: Icon(
-            //       Icons.arrow_back_ios,
-            //       color: lightOrange,
-            //     ),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(50.0),
+              child: AppBar(
+                backgroundColor: Colors.white,
+                elevation: 0,
+                titleSpacing: 0,
+                actions: [
+                  Container(
+                    width: size.width * 0.7,
+                    child: Text(
+                      "Search result",
+                      style: TextStyle(
+                          color: heavyBlue,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => Cart(),
+                      ));
+                    },
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.orange,
+                      size: 40,
+                    ),
+                  ),
+                  SizedBox(width: size.width * 0.06)
+                ],
+              ),
+            ),
             //     flexibleSpace: Column(
             //       children: [
             //         SizedBox(

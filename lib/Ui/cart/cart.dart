@@ -146,7 +146,7 @@ class _CartState extends State<Cart> {
                                                     "Name ${cart[index].product.name}",
                                                     maxLines: 1,
                                                     style: TextStyle(
-                                                        color: Colors.grey,
+                                                        color: Colors.grey[700],
 
                                                         // overflow: TextOverflow
                                                         // .ellipsis,
@@ -172,12 +172,12 @@ class _CartState extends State<Cart> {
                                                       ? Text("Quotation",
                                                           style: TextStyle(
                                                               color: Colors
-                                                                  .grey[400]))
+                                                                  .grey[600]))
                                                       : Text(
                                                           "Offer",
                                                           style: TextStyle(
                                                               color: Colors
-                                                                  .grey[400]),
+                                                                  .grey[600]),
                                                         ),
                                                 ),
                                               ],
@@ -195,7 +195,7 @@ class _CartState extends State<Cart> {
                                                   child: Text(
                                                     "Brand ${cart[index].brand.name},",
                                                     style: TextStyle(
-                                                        color: green,
+                                                        color: Colors.grey[600],
                                                         fontSize: 15),
                                                   ),
                                                 ),
@@ -208,9 +208,9 @@ class _CartState extends State<Cart> {
                                               height: size.height * 0.04,
                                               width: size.width * 0.3,
                                               child: Text(
-                                                "price ${cart[index].fullPrice.ceil()}",
+                                                "price ${cart[index].fullPrice}",
                                                 style: TextStyle(
-                                                    color: orange,
+                                                    color: Colors.grey[600],
                                                     fontSize: 15),
                                               ),
                                             ),
@@ -230,7 +230,7 @@ class _CartState extends State<Cart> {
                                                   cart[index].id)),
                                           child: Icon(
                                             Icons.delete,
-                                            color: Colors.grey,
+                                            color: lightOrange,
                                           ))
                                     ],
                                   ),
@@ -256,7 +256,7 @@ class _CartState extends State<Cart> {
                                   BlocBuilder<CartBloc, CartState>(
                                     builder: (context, state) {
                                       return Text(
-                                        "${total.toInt()} AED",
+                                        "${cart[0].fullPrice}",
                                         style: TextStyle(
                                             color: lightGray,
                                             fontSize: 20,
