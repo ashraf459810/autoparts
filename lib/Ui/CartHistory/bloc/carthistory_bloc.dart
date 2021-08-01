@@ -28,14 +28,15 @@ class CarthistoryBloc extends Bloc<CarthistoryEvent, CarthistoryState> {
       cartHistory =
           await helper.getcustomerordershistory(event.pages, event.size, id);
       print("here");
+      print(cartHistory.carts.length);
       if (cartHistory == null) {
         yield Error("error while loading your orders");
-      }
-      if (cartHistory.carts.length == 0) {
+      } else if (cartHistory.carts.length == 0) {
       } else {
         for (var i = 0; i < cartHistory.carts.length; i++) {
           carts.add(cartHistory.carts[i]);
         }
+
         yield GetCartHistoyState(carts);
       }
     }
