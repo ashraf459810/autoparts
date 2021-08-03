@@ -653,7 +653,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       onTap: () {
                                         Navigator.of(context)
                                             .push(MaterialPageRoute(
-                                          builder: (context) => CartHistory(),
+                                          builder: (context) => CartHistoryy(),
                                         ));
                                       },
                                       child: Row(
@@ -1037,10 +1037,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     Widget okButton = InkWell(
       onTap: () {
-        if (type == "Support")
+        if (type == "Support") {
           p.add(SupportEvent(isvendor, customersupportcontroller.text));
-        else
+          Navigator.of(context, rootNavigator: true).pop();
+        } else {
           p.add(SuggestionEvent(isvendor, customersupportcontroller.text));
+          Navigator.of(context, rootNavigator: true).pop();
+        }
       },
       child: Container(
         height: 47,

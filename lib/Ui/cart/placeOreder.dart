@@ -425,7 +425,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
                       InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CartHistory(),
+                            builder: (context) => CartHistoryy(),
                           ));
                         },
                         child: Center(

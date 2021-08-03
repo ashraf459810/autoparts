@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:autopart/Ui/CartHistory/bloc/carthistory_bloc.dart';
+
 import 'package:autopart/core/style/base_color.dart';
 import 'package:autopart/model/CartHistory.dart';
 import 'package:flutter/material.dart';
@@ -267,7 +268,10 @@ class _CartHistoryItemState extends State<CartHistoryItem> {
 
     Widget okButton = InkWell(
       onTap: () {
+        Navigator.of(context, rootNavigator: true).pop();
         context.read<CarthistoryBloc>().add(ReturnItemEvent(id, reason));
+
+        Navigator.of(context).pop();
       },
       child: Container(
         height: 47,

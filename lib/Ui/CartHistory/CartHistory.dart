@@ -5,14 +5,12 @@ import 'package:autopart/model/CartHistory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartHistory extends StatefulWidget {
-  CartHistory({Key key}) : super(key: key);
-
+class CartHistoryy extends StatefulWidget {
   @override
-  _CartHistoryState createState() => _CartHistoryState();
+  _CartHistoryyState createState() => _CartHistoryyState();
 }
 
-class _CartHistoryState extends State<CartHistory> {
+class _CartHistoryyState extends State<CartHistoryy> {
   ScrollController scrollController = ScrollController();
   int page = 0;
   int sszie = 10;
