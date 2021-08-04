@@ -1,5 +1,6 @@
 import 'package:autopart/Ui/CartHistory/bloc/carthistory_bloc.dart';
 import 'package:autopart/Ui/CartHistoryItem/CartHistoryItem.dart';
+import 'package:autopart/Ui/ReturnRequests/ReturnRequests.dart';
 import 'package:autopart/core/style/base_color.dart';
 import 'package:autopart/model/CartHistory.dart';
 import 'package:flutter/material.dart';
@@ -26,18 +27,37 @@ class _CartHistoryyState extends State<CartHistoryy> {
               preferredSize: Size.fromHeight(80),
               child: AppBar(
                 backgroundColor: Colors.white,
-                title: Padding(
-                  padding: const EdgeInsets.only(top: 20, right: 100),
-                  child: Container(
-                    child: Text(
-                      "Cart History",
-                      style: TextStyle(
-                          color: heavyBlue,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
+                title: Container(
+                  child: Text(
+                    "Cart History",
+                    style: TextStyle(
+                        color: heavyBlue,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
+                actions: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ReturnRequests(),
+                      ));
+                    },
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.undo,
+                          color: Colors.orange,
+                        ),
+                        Text(
+                          "Return Requests",
+                          style: TextStyle(
+                              color: Colors.orange[900], fontSize: 10),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
                 elevation: 0,
               )),
           body: BlocConsumer<CarthistoryBloc, CarthistoryState>(

@@ -22,3 +22,8 @@ class ReturnItemState extends CarthistoryState {
 
   ReturnItemState(this.success);
 }
+
+class ReturnOrdersState extends CarthistoryState {
+  final List<CContent> requests;
+  ReturnOrdersState(this.requests);
+}

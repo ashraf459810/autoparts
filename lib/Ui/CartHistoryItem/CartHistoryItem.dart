@@ -268,8 +268,8 @@ class _CartHistoryItemState extends State<CartHistoryItem> {
 
     Widget okButton = InkWell(
       onTap: () {
-        Navigator.of(context, rootNavigator: true).pop();
         context.read<CarthistoryBloc>().add(ReturnItemEvent(id, reason));
+        Navigator.of(context, rootNavigator: true).pop();
 
         Navigator.of(context).pop();
       },

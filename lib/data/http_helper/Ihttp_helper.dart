@@ -7,6 +7,7 @@ import 'package:autopart/model/GetCartModel.dart';
 import 'package:autopart/model/MultiReqestforQuotationNotification.dart';
 import 'package:autopart/model/Quotation.dart';
 import 'package:autopart/model/QuotationReponse.dart';
+import 'package:autopart/model/ReturnRequestModel/ReturnRequestsModel.dart';
 import 'package:autopart/model/VendorStatistics.dart';
 import 'package:autopart/model/getVendorNotifications(requests)/GetVendorRequests.dart';
 import 'package:autopart/model/brand_model/brand_model.dart';
@@ -104,4 +105,5 @@ abstract class IHttpHelper {
   Future<CartHistory> getcustomerordershistory(
       int page, int size, int customerid);
   Future<String> requesttoreturnitem(int customerid, int itemid, String reason);
+  Future<ReturnRequestsModel> getreturnrequests(int id, int page, int size);
 }

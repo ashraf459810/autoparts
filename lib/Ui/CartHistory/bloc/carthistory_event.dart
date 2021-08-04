@@ -14,3 +14,9 @@ class ReturnItemEvent extends CarthistoryEvent {
   final String reason;
   ReturnItemEvent(this.itemid, this.reason);
 }
+
+class ReturnOrdersEvent extends CarthistoryEvent {
+  final int page;
+  final int size;
+  ReturnOrdersEvent(this.page, this.size);
+}

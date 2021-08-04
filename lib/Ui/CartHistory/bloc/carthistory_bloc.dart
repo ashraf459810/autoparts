@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:autopart/data/http_helper/http_helper.dart';
 import 'package:autopart/data/prefs_helper/prefs_helper.dart';
 import 'package:autopart/model/CartHistory.dart';
+import 'package:autopart/model/ReturnRequestModel/ReturnRequestsModel.dart';
 
 import 'package:bloc/bloc.dart';
 
@@ -17,6 +18,7 @@ class CarthistoryBloc extends Bloc<CarthistoryEvent, CarthistoryState> {
   HttpHelper helper = HttpHelper();
   PrefsHelper prefsHelper = PrefsHelper();
   List<CartInfo> carts = [];
+  List<CContent> returnrequests = [];
 
   @override
   Stream<CarthistoryState> mapEventToState(
@@ -49,6 +51,23 @@ class CarthistoryBloc extends Bloc<CarthistoryEvent, CarthistoryState> {
         yield ReturnItemState(result);
       } else
         yield Error("you already asked for return");
+    }
+
+    if (event is ReturnOrdersEvent) {
+      try {
+        int id = await prefsHelper.getcustomerid();
+        ReturnRequestsModel requestsModel =
+            await helper.getreturnrequests(id, event.page, event.size);
+        if (requestsModel.content.isNotEmpty) {
+          for (var i = 0; i < requestsModel.content.length; i++) {
+            returnrequests.add(requestsModel.content[i]);
+          }
+        } else {}
+
+        yield ReturnOrdersState(returnrequests);
+      } catch (error) {
+        yield Error(error.toString());
+      }
     }
   }
 }

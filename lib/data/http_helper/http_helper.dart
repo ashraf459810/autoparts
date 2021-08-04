@@ -10,6 +10,7 @@ import 'package:autopart/model/MultiReqestforQuotationNotification.dart';
 import 'package:autopart/model/Quotation.dart';
 import 'package:autopart/model/QuotationReponse.dart';
 import 'package:autopart/model/RequestForCustomers.dart';
+import 'package:autopart/model/ReturnRequestModel/ReturnRequestsModel.dart';
 import 'package:autopart/model/SearchedProduct.dart';
 import 'package:autopart/model/UploadImage/UploadImage.dart';
 import 'package:autopart/model/VendorChosenNotification/VendorChosenNotification.dart';
@@ -823,9 +824,26 @@ class HttpHelper implements IHttpHelper {
     var response = await http.post(url);
     print(url);
     print(response.statusCode);
-    print(response.body);
+
     if (response.body == "Done")
       return response.body;
+    else
+      return null;
+  }
+
+  @override
+  Future<ReturnRequestsModel> getreturnrequests(
+      int id, int page, int size) async {
+    final String url =
+        "http://$base:8080/autoparts/order/getcustomerreturntodos?customer=$id&page=$page&size=$size";
+    var response = await http.get(url);
+    print(url);
+    print(response.statusCode);
+    ReturnRequestsModel requestsModel =
+        returnRequestsModelFromJson(response.body);
+
+    if (response.statusCode == 200)
+      return requestsModel;
     else
       return null;
   }
