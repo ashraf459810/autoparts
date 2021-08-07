@@ -97,21 +97,24 @@ class _SignUpTabState extends State<SignUpTab> {
           ),
         ],
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  height: size.height,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/login_bg.png'),
-                          fit: BoxFit.fill)),
-                  child: Column(
+          body: Container(
+            width: size.width,
+            height: size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/login_bg.png',
+                  ),
+                  fit: BoxFit.cover),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Column(
                     children: [
-                      SizedBox(
-                        height: 21,
-                      ),
+                      // SizedBox(
+                      //   height: 21,
+                      // ),
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 16, right: 16, top: 8, bottom: 8),
@@ -1701,9 +1704,9 @@ class _SignUpTabState extends State<SignUpTab> {
                         height: 35,
                       ),
                     ],
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ));
