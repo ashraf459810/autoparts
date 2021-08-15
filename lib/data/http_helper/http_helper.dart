@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:autopart/model/AutopartShop.dart';
 import 'package:autopart/model/BrandPagenModel.dart';
 import 'package:autopart/model/BrandsEdit.dart';
@@ -36,7 +37,7 @@ import 'package:http/http.dart' as http;
 import 'package:autopart/model/VendorProductsModel.dart' as con;
 
 class HttpHelper implements IHttpHelper {
-  String base = "176.31.225.174";
+  String base = "134.209.78.88";
 
   @override
   Future<List<CarModel>> getcars({int id}) async {
@@ -193,7 +194,7 @@ class HttpHelper implements IHttpHelper {
       var body = utf8.decode(response.bodyBytes);
 
       List<ListAllVendorProducts> list = listAllVendorProductsFromJson(body);
-
+      print("here the list lenght ${list.length}");
       return list;
     }
     return null;
@@ -205,6 +206,8 @@ class HttpHelper implements IHttpHelper {
     final String url = "http://$base:8080/autoparts/requestforquotation/create";
 
     var body = sendQuotationToJson(sendQuotation);
+    print(url);
+    log(body);
 
     print("here is the json body " "$body");
 
@@ -234,7 +237,7 @@ class HttpHelper implements IHttpHelper {
 
     if (response.statusCode == 200) {
       print("requests ${response.statusCode}");
-      print(response.body);
+      log(response.body);
 
       CustomerRequest customerRequest = customerRequestFromJson(response.body);
       List<Content> requests = [];
@@ -255,7 +258,7 @@ class HttpHelper implements IHttpHelper {
 
     if (response.statusCode == 200) {
       print("requests ${response.statusCode}");
-      print(response.body);
+      log(response.body);
 
       RequestForCustomer customerRequest =
           requestForCustomerFromJson(response.body);
@@ -399,6 +402,7 @@ class HttpHelper implements IHttpHelper {
     print("${response.statusCode} here from the http");
     print("${response.body} here from http");
     if (response.statusCode == 200) {
+      log(response.body);
       CustomerOffers customerOffers = customerOffersFromJson(response.body);
       List<Offer> offers = customerOffers.content;
       return offers;
@@ -440,6 +444,7 @@ class HttpHelper implements IHttpHelper {
 
     if (response.statusCode == 200) {
       print("here from offer api${response.statusCode}");
+      log(response.body);
       VendorOfferNotificationModel vendorOfferNotification =
           vendorOfferNotificationModelFromJson(response.body);
 
@@ -459,6 +464,7 @@ class HttpHelper implements IHttpHelper {
 
     print(response.statusCode);
     if (response.statusCode == 200) {
+      log(response.body);
       print("200 from getustomernot");
 
       return response.body;

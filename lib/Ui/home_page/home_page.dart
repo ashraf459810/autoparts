@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                   child: Stack(
                     children: [
                       Image.asset(
-                        'assets/images/new.png',
+                        'assets/images/home5.png',
                         width: size.width * 0.9,
                         height: size.height * 0.5,
                         fit: BoxFit.cover,
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Image.asset(
-                        'assets/images/new2.png',
+                        'assets/images/home2.png',
                         width: size.width * 0.9,
                         height: size.height * 0.33,
                         fit: BoxFit.cover,

@@ -67,7 +67,7 @@ class _VendorHomePageState extends State<VendorHomePage>
             ),
           ),
           Container(
-            height: size.height - size.height * 0.32,
+            height: size.height - size.height * 0.29,
             child: Stack(children: [
               Opacity(
                 opacity: 0.1,

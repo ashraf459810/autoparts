@@ -174,6 +174,7 @@ class _CartHistoryItemState extends State<CartHistoryItem> {
                                       fontSize: 16.0);
                                 }
                                 if (state is ReturnItemState) {
+                                  print("here should be toasst");
                                   Fluttertoast.showToast(
                                       msg:
                                           "your return order sent successfully",
@@ -182,6 +183,7 @@ class _CartHistoryItemState extends State<CartHistoryItem> {
                                       backgroundColor: lightOrange,
                                       textColor: Colors.white,
                                       fontSize: 16.0);
+                                  Navigator.of(context).pop();
                                 }
                               },
                               child: Column(
@@ -270,8 +272,6 @@ class _CartHistoryItemState extends State<CartHistoryItem> {
       onTap: () {
         context.read<CarthistoryBloc>().add(ReturnItemEvent(id, reason));
         Navigator.of(context, rootNavigator: true).pop();
-
-        Navigator.of(context).pop();
       },
       child: Container(
         height: 47,

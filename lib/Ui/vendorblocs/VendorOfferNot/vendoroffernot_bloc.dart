@@ -24,7 +24,9 @@ class VendoroffernotBloc
 
       VendorOfferNotificationModel vendorOfferNotificationModel =
           await httpHelper.vendorofferfromnotification(
-              offerId: event.offferid, vendorId: event.vendorid,);
+        offerId: event.offferid,
+        vendorId: event.vendorid,
+      );
 
       if (vendorOfferNotificationModel != null) {
         yield GetOfferNotState(
@@ -35,25 +37,30 @@ class VendoroffernotBloc
     }
 
     if (event is AddOfferEvent) {
+      print(event.price);
       yield Loading();
       String result = await httpHelper.addvendoroffer(
-          days: event.days, price: event.price, offerid: event.offerid,condition: event.condition,warranty: event.warranty);
+          days: event.days,
+          price: event.price,
+          offerid: event.offerid,
+          condition: event.condition,
+          warranty: event.warranty);
       if (result == "Done") {
         yield AddOfferState(result: "your offer added successfully");
       } else {
         yield Error("Error while Adding Offer");
-      }}
-      if (event is RejectOfferEvent) {
-        print("here from bloc");
-        String result =
-            await httpHelper.replyvendornotavailable(offerid: event.offerid);
-        print(result);
-        if (result == "Done") {
-          yield RejecOfferState("order not available sent successfully");
-        } else {
-          yield Error(result);
-        }
+      }
+    }
+    if (event is RejectOfferEvent) {
+      print("here from bloc");
+      String result =
+          await httpHelper.replyvendornotavailable(offerid: event.offerid);
+      print(result);
+      if (result == "Done") {
+        yield RejecOfferState("order not available sent successfully");
+      } else {
+        yield Error(result);
       }
     }
   }
-
+}

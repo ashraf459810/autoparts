@@ -11,24 +11,28 @@ String vendorOfferNotificationModelToJson(VendorOfferNotificationModel data) =>
     json.encode(data.toJson());
 
 class VendorOfferNotificationModel {
-  VendorOfferNotificationModel(
-      {this.id,
-      this.version,
-      this.creationDate,
-      this.lastModificationDate,
-      this.uuid,
-      this.objectType,
-      this.attachments,
-      this.brand,
-      this.car,
-      this.product,
-      this.price,
-      this.ourPercentage,
-      this.fullPrice,
-      this.daysToDeliver,
-      this.notes,
-      this.status,
-      this.type});
+  VendorOfferNotificationModel({
+    this.id,
+    this.version,
+    this.creationDate,
+    this.lastModificationDate,
+    this.uuid,
+    this.objectType,
+    this.attachments,
+    this.brand,
+    this.car,
+    this.product,
+    this.price,
+    this.ourPercentage,
+    this.fullPrice,
+    this.daysToDeliver,
+    this.notes,
+    this.status,
+    this.warrantyMonths,
+    this.productCondition,
+    this.reminded,
+    this.type,
+  });
 
   int id;
   int version;
@@ -46,6 +50,9 @@ class VendorOfferNotificationModel {
   dynamic daysToDeliver;
   String notes;
   String status;
+  dynamic warrantyMonths;
+  dynamic productCondition;
+  bool reminded;
   String type;
 
   factory VendorOfferNotificationModel.fromJson(Map<String, dynamic> json) =>
@@ -66,7 +73,10 @@ class VendorOfferNotificationModel {
         daysToDeliver: json["daysToDeliver"],
         notes: json["notes"],
         status: json["status"],
-        type:  json["type"],
+        warrantyMonths: json["warrantyMonths"],
+        productCondition: json["productCondition"],
+        reminded: json["reminded"],
+        type: json["type"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,19 +96,16 @@ class VendorOfferNotificationModel {
         "daysToDeliver": daysToDeliver,
         "notes": notes,
         "status": status,
-        "type" : type
+        "warrantyMonths": warrantyMonths,
+        "productCondition": productCondition,
+        "reminded": reminded,
+        "type": type,
       };
 }
 
 class Brand {
   Brand({
     this.id,
-    this.version,
-    this.creationDate,
-    this.lastModificationDate,
-    this.uuid,
-    this.objectType,
-    this.attachments,
     this.name,
     this.code,
     this.brand,
@@ -106,12 +113,6 @@ class Brand {
   });
 
   int id;
-  int version;
-  DateTime creationDate;
-  DateTime lastModificationDate;
-  String uuid;
-  String objectType;
-  List<dynamic> attachments;
   String name;
   String code;
   Brand brand;
@@ -119,12 +120,6 @@ class Brand {
 
   factory Brand.fromJson(Map<String, dynamic> json) => Brand(
         id: json["id"],
-        version: json["version"],
-        creationDate: DateTime.parse(json["creationDate"]),
-        lastModificationDate: DateTime.parse(json["lastModificationDate"]),
-        uuid: json["uuid"],
-        objectType: json["objectType"],
-        attachments: List<dynamic>.from(json["attachments"].map((x) => x)),
         name: json["name"],
         code: json["code"],
         brand: json["brand"] == null ? null : Brand.fromJson(json["brand"]),
@@ -133,12 +128,6 @@ class Brand {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "version": version,
-        "creationDate": creationDate.toIso8601String(),
-        "lastModificationDate": lastModificationDate.toIso8601String(),
-        "uuid": uuid,
-        "objectType": objectType,
-        "attachments": List<dynamic>.from(attachments.map((x) => x)),
         "name": name,
         "code": code,
         "brand": brand == null ? null : brand.toJson(),
