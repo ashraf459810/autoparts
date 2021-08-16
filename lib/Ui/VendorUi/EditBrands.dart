@@ -1,4 +1,3 @@
-
 import 'package:autopart/Ui/signup_tab/creat_vendor_bloc.dart';
 import 'package:autopart/Ui/vendorblocs/profilebloc/profilebloc_bloc.dart';
 import 'package:autopart/core/style/base_color.dart';
@@ -77,8 +76,8 @@ class _EditBrandsState extends State<EditBrands> {
                                       i < state.brands.length;
                                       i++) {
                                     s = state.brands[i].name;
-                                    list = state.brands;
                                   }
+                                  list = state.brands;
                                 }
                                 return Container(
                                   width: size.width * 0.55,
@@ -221,7 +220,7 @@ class _EditBrandsState extends State<EditBrands> {
     final String encodedData = VendorBrands.encode(vendorbrands);
 
     await prefsHelper.setvendorbrands(encodedData);
-    widget.reset();
+    widget.reset(brandsEditBody);
 
     Navigator.of(context).pop();
   }

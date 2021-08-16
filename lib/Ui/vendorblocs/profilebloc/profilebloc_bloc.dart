@@ -111,6 +111,7 @@ class ProfileblocBloc extends Bloc<ProfileblocEvent, ProfileblocState> {
       yield GetVendorBrandsState(decodedbrands);
     }
     if (event is EditBrandsEvent) {
+      print("here from brands");
       yield Loading();
       BrandsEdit brandsEdit = await helper.editbrands(event.brandsEditBody);
       if (brandsEdit != null)

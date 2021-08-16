@@ -780,9 +780,12 @@ class HttpHelper implements IHttpHelper {
   @override
   Future<BrandsEdit> editbrands(BrandsEditBody brandsEditBody) async {
     final String url = 'http://$base:8080/autoparts/vendor/update';
+    print(url);
+    print("${brandsEditBodyToJson(brandsEditBody)}");
 
     var response =
         await http.post(url, body: brandsEditBodyToJson(brandsEditBody));
+    print(" here the list from edit brands ${response.body}");
     if (response.statusCode == 200) {
       print("200 from edit");
       BrandsEdit brandsEdit = brandsEditFromJson(response.body);
