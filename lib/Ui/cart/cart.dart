@@ -256,7 +256,7 @@ class _CartState extends State<Cart> {
                                   BlocBuilder<CartBloc, CartState>(
                                     builder: (context, state) {
                                       return Text(
-                                        "${cart[0].fullPrice}",
+                                        "${cart[0].fullPrice.toInt()}",
                                         style: TextStyle(
                                             color: lightGray,
                                             fontSize: 20,
