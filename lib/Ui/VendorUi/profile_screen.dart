@@ -11,7 +11,7 @@ import 'package:autopart/Ui/VendorUi/VendorReports.dart';
 import 'package:autopart/Ui/requests_screen/requests_screen.dart';
 import 'package:autopart/core/style/base_color.dart';
 import 'package:autopart/data/prefs_helper/prefs_helper.dart';
-import 'package:autopart/model/VendorInfoAfterVerify/VendorBrands.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   ProfileblocBloc p = ProfileblocBloc();
   String username = '';
   String email = '';
-  List<VendorBrands> brand = [];
+  var brand = [];
 
   NotificationBar bar = NotificationBar();
 
@@ -114,6 +114,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 backgroundColor: lightOrange,
                 textColor: Colors.white,
                 fontSize: 16.0);
+          }
+          if (state is EditBrandsState) {
+            brand = state.brandsEdit.brands;
           }
           return Scaffold(
             appBar: PreferredSize(
@@ -217,8 +220,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   .push(MaterialPageRoute(
                                                 builder: (context) =>
                                                     EditBrands(
-                                                  reset: () {
-                                                    p.add(Getisvendor());
+                                                  reset: (value) {
+                                                    p.add(
+                                                        EditBrandsEvent(value));
+                                                    // p.add(GetVendorBrands());
                                                   },
                                                 ),
                                               ));
