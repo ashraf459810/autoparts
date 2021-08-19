@@ -3,6 +3,7 @@ import 'package:autopart/model/BrandPagenModel.dart';
 import 'package:autopart/model/BrandsEdit.dart';
 import 'package:autopart/model/BrandsEditBody.dart';
 import 'package:autopart/model/CartHistory.dart';
+import 'package:autopart/model/FinishedOrdersCustomer.dart';
 import 'package:autopart/model/GetCartModel.dart';
 import 'package:autopart/model/MultiReqestforQuotationNotification.dart';
 import 'package:autopart/model/Quotation.dart';
@@ -106,4 +107,7 @@ abstract class IHttpHelper {
       int page, int size, int customerid);
   Future<String> requesttoreturnitem(int customerid, int itemid, String reason);
   Future<ReturnRequestsModel> getreturnrequests(int id, int page, int size);
+  Future<List<FinishedOrders>> customerfinishedorders(
+    int customerid,
+  );
 }

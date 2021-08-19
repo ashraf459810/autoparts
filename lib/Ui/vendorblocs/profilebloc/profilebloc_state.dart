@@ -45,3 +45,9 @@ class EditBrandsState extends ProfileblocState {
   final BrandsEdit brandsEdit;
   EditBrandsState(this.brandsEdit);
 }
+
+class CustomerFinishedOrdersState extends ProfileblocState {
+  final List<FinishedOrders> finishedorders;
+
+  CustomerFinishedOrdersState(this.finishedorders);
+}

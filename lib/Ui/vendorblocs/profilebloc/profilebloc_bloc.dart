@@ -4,6 +4,7 @@ import 'package:autopart/data/http_helper/http_helper.dart';
 import 'package:autopart/data/prefs_helper/prefs_helper.dart';
 import 'package:autopart/model/BrandsEdit.dart';
 import 'package:autopart/model/BrandsEditBody.dart';
+import 'package:autopart/model/FinishedOrdersCustomer.dart';
 import 'package:autopart/model/VendorInfoAfterVerify/VendorBrands.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -118,6 +119,18 @@ class ProfileblocBloc extends Bloc<ProfileblocEvent, ProfileblocState> {
         yield EditBrandsState(brandsEdit);
       else
         yield Error("error while editing brands");
+    }
+    if (event is CustomerFinishedOrdersEvent) {
+      yield Loading();
+      int customerid = await prefsHelper.getcustomerid();
+      List<FinishedOrders> list = await helper.customerfinishedorders(
+        customerid,
+      );
+
+      if (list != null) {
+        yield CustomerFinishedOrdersState(list);
+      } else
+        yield Error("some thing went wrong");
     }
   }
 }

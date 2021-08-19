@@ -6,6 +6,7 @@ import 'package:autopart/model/BrandsEdit.dart';
 import 'package:autopart/model/BrandsEditBody.dart';
 import 'package:autopart/model/CartHistory.dart';
 import 'package:autopart/model/CustomerOffers.dart/CustomerOffers.dart';
+import 'package:autopart/model/FinishedOrdersCustomer.dart';
 import 'package:autopart/model/GetCartModel.dart';
 import 'package:autopart/model/MultiReqestforQuotationNotification.dart';
 import 'package:autopart/model/Quotation.dart';
@@ -854,6 +855,23 @@ class HttpHelper implements IHttpHelper {
     if (response.statusCode == 200)
       return requestsModel;
     else
+      return null;
+  }
+
+  @override
+  Future<List<FinishedOrders>> customerfinishedorders(
+    int customerid,
+  ) async {
+    final String url =
+        "http://$base:8080/autoparts/order/getbycustomerandstatus?customer=$customerid&orderStatus=DONE";
+    var response = await http.get(url);
+    print(url);
+    if (response.statusCode == 200) {
+      print(response.statusCode);
+      FinishedOrdersCustomer finishedOrdersCustomer =
+          finishedOrdersCustomerFromJson(response.body);
+      return finishedOrdersCustomer.content;
+    } else
       return null;
   }
 }

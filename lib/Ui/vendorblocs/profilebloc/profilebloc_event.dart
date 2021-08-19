@@ -6,6 +6,7 @@ abstract class ProfileblocEvent {}
 class Getisvendor extends ProfileblocEvent {
   Getisvendor();
 }
+
 class GetVendorBrands extends ProfileblocEvent {}
 
 class RateEvent extends ProfileblocEvent {
@@ -23,13 +24,17 @@ class SupportEvent extends ProfileblocEvent {
 }
 
 class SuggestionEvent extends ProfileblocEvent {
-  
   final String notes;
   final bool isvendor;
-  SuggestionEvent(this.isvendor, this.notes, );
+  SuggestionEvent(
+    this.isvendor,
+    this.notes,
+  );
 }
- class EditBrandsEvent extends ProfileblocEvent{
-     final BrandsEditBody brandsEditBody;
-  EditBrandsEvent(this.brandsEditBody);
 
- }
+class EditBrandsEvent extends ProfileblocEvent {
+  final BrandsEditBody brandsEditBody;
+  EditBrandsEvent(this.brandsEditBody);
+}
+
+class CustomerFinishedOrdersEvent extends ProfileblocEvent {}

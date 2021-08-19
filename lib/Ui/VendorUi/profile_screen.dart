@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:autopart/Ui/CartHistory/CartHistory.dart';
+import 'package:autopart/Ui/CustomerFinishedOrders/CustomerFinishedOrders.dart';
 import 'package:autopart/Ui/VendorUi/ChosenNotificationType.dart';
 import 'package:autopart/Ui/VendorUi/EditBrands.dart';
 import 'package:autopart/Ui/wallet/Wallet.dart';
@@ -492,43 +493,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       indent: 8,
                                       endIndent: 8,
                                     ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 10, right: 16, top: 8, bottom: 8),
-                                    child: SvgPicture.asset(
-                                      "assets/images/finished.svg",
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  Container(
-                                    width: size.width * 0.55,
-                                    child: Text(
-                                      'Finished Orders',
-                                      style: TextStyle(
-                                          fontSize: 12, color: heavyBlue),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: bgColor,
-                                        borderRadius:
-                                            BorderRadius.circular(100),
+                              InkWell(
+                                onTap: () {
+                                  if (isvendor == false) {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          CustomerFinishedOrders(),
+                                    ));
+                                  }
+                                },
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 10,
+                                          right: 16,
+                                          top: 8,
+                                          bottom: 8),
+                                      child: SvgPicture.asset(
+                                        "assets/images/finished.svg",
+                                        fit: BoxFit.fill,
                                       ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: heavyBlue,
-                                          size: 16,
+                                    ),
+                                    Container(
+                                      width: size.width * 0.55,
+                                      child: Text(
+                                        'Finished Orders',
+                                        style: TextStyle(
+                                            fontSize: 12, color: heavyBlue),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: bgColor,
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: heavyBlue,
+                                            size: 16,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  )
-                                ],
+                                    )
+                                  ],
+                                ),
                               ),
                               Divider(
                                 indent: 8,
