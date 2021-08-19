@@ -1,22 +1,23 @@
 import 'package:autopart/Ui/vendorblocs/profilebloc/profilebloc_bloc.dart';
-import 'package:autopart/model/FinishedOrdersCustomer.dart';
+
+import 'package:autopart/model/PendingOrdersCustomer.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomerFinishedOrders extends StatefulWidget {
-  CustomerFinishedOrders({Key key}) : super(key: key);
+class CustomerPendingOrders extends StatefulWidget {
+  CustomerPendingOrders({Key key}) : super(key: key);
 
   @override
-  _CustomerFinishedOrdersState createState() => _CustomerFinishedOrdersState();
+  _CustomerPendingOrdersState createState() => _CustomerPendingOrdersState();
 }
 
-class _CustomerFinishedOrdersState extends State<CustomerFinishedOrders> {
-  List<FinishedOrders> finishedorders = [];
+class _CustomerPendingOrdersState extends State<CustomerPendingOrders> {
+  var finishedorders = [];
   ProfileblocBloc profileblocBloc = ProfileblocBloc();
   @override
   void initState() {
-    profileblocBloc.add(CustomerFinishedOrdersEvent());
+    profileblocBloc.add(CustomerPendingOrdersEvent());
     super.initState();
   }
 
@@ -41,8 +42,7 @@ class _CustomerFinishedOrdersState extends State<CustomerFinishedOrders> {
               child: Text(state.error),
             );
           }
-          if (state is CustomerFinishedOrdersState) {
-            print("state is finished orders ");
+          if (state is PendingOrdersState) {
             print(state.finishedorders.length);
             finishedorders = state.finishedorders;
           }
@@ -125,7 +125,7 @@ class _CustomerFinishedOrdersState extends State<CustomerFinishedOrders> {
                 )
               : Container(
                   child: Center(
-                    child: Text("You don't have finished Orders"),
+                    child: Text("You don't have Pending Orders"),
                   ),
                 );
         },

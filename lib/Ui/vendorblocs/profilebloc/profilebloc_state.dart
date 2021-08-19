@@ -51,3 +51,9 @@ class CustomerFinishedOrdersState extends ProfileblocState {
 
   CustomerFinishedOrdersState(this.finishedorders);
 }
+
+class PendingOrdersState extends ProfileblocState {
+  var finishedorders;
+
+  PendingOrdersState(this.finishedorders);
+}

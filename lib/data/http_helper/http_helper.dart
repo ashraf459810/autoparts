@@ -860,10 +860,9 @@ class HttpHelper implements IHttpHelper {
 
   @override
   Future<List<FinishedOrders>> customerfinishedorders(
-    int customerid,
-  ) async {
+      int customerid, String status) async {
     final String url =
-        "http://$base:8080/autoparts/order/getbycustomerandstatus?customer=$customerid&orderStatus=DONE";
+        "http://$base:8080/autoparts/order/getbycustomerandstatus?customer=$customerid&orderStatus=$status";
     var response = await http.get(url);
     print(url);
     if (response.statusCode == 200) {

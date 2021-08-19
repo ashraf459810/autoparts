@@ -5,6 +5,7 @@ import 'package:autopart/data/prefs_helper/prefs_helper.dart';
 import 'package:autopart/model/BrandsEdit.dart';
 import 'package:autopart/model/BrandsEditBody.dart';
 import 'package:autopart/model/FinishedOrdersCustomer.dart';
+
 import 'package:autopart/model/VendorInfoAfterVerify/VendorBrands.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -123,12 +124,21 @@ class ProfileblocBloc extends Bloc<ProfileblocEvent, ProfileblocState> {
     if (event is CustomerFinishedOrdersEvent) {
       yield Loading();
       int customerid = await prefsHelper.getcustomerid();
-      List<FinishedOrders> list = await helper.customerfinishedorders(
-        customerid,
-      );
+      List<FinishedOrders> list =
+          await helper.customerfinishedorders(customerid, "DONE");
 
       if (list != null) {
         yield CustomerFinishedOrdersState(list);
+      } else
+        yield Error("some thing went wrong");
+    }
+    if (event is CustomerPendingOrdersEvent) {
+      yield Loading();
+      int customerid = await prefsHelper.getcustomerid();
+      var list = await helper.customerfinishedorders(customerid, "PENDING");
+
+      if (list != null) {
+        yield PendingOrdersState(list);
       } else
         yield Error("some thing went wrong");
     }

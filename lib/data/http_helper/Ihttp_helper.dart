@@ -108,6 +108,5 @@ abstract class IHttpHelper {
   Future<String> requesttoreturnitem(int customerid, int itemid, String reason);
   Future<ReturnRequestsModel> getreturnrequests(int id, int page, int size);
   Future<List<FinishedOrders>> customerfinishedorders(
-    int customerid,
-  );
+      int customerid, String status);
 }

@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 
-FinishedOrdersCustomer finishedOrdersCustomerFromJson(String str) =>
-    FinishedOrdersCustomer.fromJson(json.decode(str));
+PendingOrdersCustomer finishedOrdersCustomerFromJson(String str) =>
+    PendingOrdersCustomer.fromJson(json.decode(str));
 
-String finishedOrdersCustomerToJson(FinishedOrdersCustomer data) =>
+String finishedOrdersCustomerToJson(PendingOrdersCustomer data) =>
     json.encode(data.toJson());
 
-class FinishedOrdersCustomer {
-  FinishedOrdersCustomer({
+class PendingOrdersCustomer {
+  PendingOrdersCustomer({
     this.content,
     this.pageable,
     this.totalPages,
@@ -25,7 +25,7 @@ class FinishedOrdersCustomer {
     this.empty,
   });
 
-  List<FinishedOrders> content;
+  List<PendingOrders> content;
   Pageable pageable;
   int totalPages;
   int totalElements;
@@ -37,10 +37,10 @@ class FinishedOrdersCustomer {
   int number;
   bool empty;
 
-  factory FinishedOrdersCustomer.fromJson(Map<String, dynamic> json) =>
-      FinishedOrdersCustomer(
-        content: List<FinishedOrders>.from(
-            json["content"].map((x) => FinishedOrders.fromJson(x))),
+  factory PendingOrdersCustomer.fromJson(Map<String, dynamic> json) =>
+      PendingOrdersCustomer(
+        content: List<PendingOrders>.from(
+            json["content"].map((x) => PendingOrders.fromJson(x))),
         pageable: Pageable.fromJson(json["pageable"]),
         totalPages: json["totalPages"],
         totalElements: json["totalElements"],
@@ -68,8 +68,8 @@ class FinishedOrdersCustomer {
       };
 }
 
-class FinishedOrders {
-  FinishedOrders({
+class PendingOrders {
+  PendingOrders({
     this.id,
     this.version,
     this.creationDate,
@@ -107,7 +107,7 @@ class FinishedOrders {
   double deliverXLongitude;
   double deliverYLatitude;
 
-  factory FinishedOrders.fromJson(Map<String, dynamic> json) => FinishedOrders(
+  factory PendingOrders.fromJson(Map<String, dynamic> json) => PendingOrders(
         id: json["id"],
         version: json["version"],
         creationDate: DateTime.parse(json["creationDate"]),

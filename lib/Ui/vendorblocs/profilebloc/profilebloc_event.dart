@@ -38,3 +38,5 @@ class EditBrandsEvent extends ProfileblocEvent {
 }
 
 class CustomerFinishedOrdersEvent extends ProfileblocEvent {}
+
+class CustomerPendingOrdersEvent extends ProfileblocEvent {}
