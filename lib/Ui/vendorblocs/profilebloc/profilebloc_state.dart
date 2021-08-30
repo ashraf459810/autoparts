@@ -53,7 +53,7 @@ class CustomerFinishedOrdersState extends ProfileblocState {
 }
 
 class PendingOrdersState extends ProfileblocState {
-  var finishedorders;
+  final finishedorders;
 
   PendingOrdersState(this.finishedorders);
 }

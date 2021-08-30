@@ -38,7 +38,7 @@ import 'package:http/http.dart' as http;
 import 'package:autopart/model/VendorProductsModel.dart' as con;
 
 class HttpHelper implements IHttpHelper {
-  String base = "134.209.78.88";
+  String base = "176.31.225.174";
 
   @override
   Future<List<CarModel>> getcars({int id}) async {
