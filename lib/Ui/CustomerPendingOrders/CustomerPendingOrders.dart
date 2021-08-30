@@ -1,7 +1,5 @@
 import 'package:autopart/Ui/vendorblocs/profilebloc/profilebloc_bloc.dart';
 
-import 'package:autopart/model/PendingOrdersCustomer.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
