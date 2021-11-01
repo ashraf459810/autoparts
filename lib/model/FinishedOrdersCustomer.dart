@@ -108,25 +108,24 @@ class FinishedOrders {
   double deliverYLatitude;
 
   factory FinishedOrders.fromJson(Map<String, dynamic> json) => FinishedOrders(
-        id: json["id"],
-        version: json["version"],
-        creationDate: DateTime.parse(json["creationDate"]),
-        lastModificationDate: DateTime.parse(json["lastModificationDate"]),
-        uuid: json["uuid"],
-        objectType: json["objectType"],
-        attachments: List<dynamic>.from(json["attachments"].map((x) => x)),
-        customer: Customer.fromJson(json["customer"]),
-        currentCartItems: List<CurrentCartItem>.from(
-            json["currentCartItems"].map((x) => CurrentCartItem.fromJson(x))),
-        status: json["status"],
-        fullPrice: json["fullPrice"].toDouble(),
-        deliverCountry: json["deliverCountry"],
-        deliverCity: json["deliverCity"],
-        deliverStreet: json["deliverStreet"],
-        deliverAdditionalAddress: json["deliverAdditionalAddress"],
-        deliverXLongitude: json["deliverXLongitude"].toDouble(),
-        deliverYLatitude: json["deliverYLatitude"].toDouble(),
-      );
+      id: json["id"],
+      version: json["version"],
+      creationDate: DateTime.parse(json["creationDate"]),
+      lastModificationDate: DateTime.parse(json["lastModificationDate"]),
+      uuid: json["uuid"],
+      objectType: json["objectType"],
+      attachments: List<dynamic>.from(json["attachments"].map((x) => x)),
+      customer: Customer.fromJson(json["customer"]),
+      currentCartItems: List<CurrentCartItem>.from(
+          json["currentCartItems"].map((x) => CurrentCartItem.fromJson(x))),
+      status: json["status"],
+      fullPrice: json["fullPrice"].toDouble(),
+      deliverCountry: json["deliverCountry"],
+      deliverCity: json["deliverCity"],
+      deliverStreet: json["deliverStreet"],
+      deliverAdditionalAddress: json["deliverAdditionalAddress"],
+      deliverXLongitude: json["deliverXLongitude"],
+      deliverYLatitude: json["deliverYLatitude"]);
 
   Map<String, dynamic> toJson() => {
         "id": id,
