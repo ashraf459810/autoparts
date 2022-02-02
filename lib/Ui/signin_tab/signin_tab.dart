@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 
 import '../../core/style/base_color.dart';
 
@@ -30,7 +30,7 @@ class _SignInTabState extends State<SignInTab> {
   TextEditingController mobileNumbercontroller = TextEditingController();
   FocusNode f1 = FocusNode();
 
-  GoogleSignIn googleSignIn = GoogleSignIn();
+
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
